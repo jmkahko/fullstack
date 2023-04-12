@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     participant selain
     participant palvelin
@@ -6,3 +7,4 @@ sequenceDiagram
     activate palvelin
     palvelin-->>selain: Selain lähettää JSON muotoisen lisäyksen payloadissa headerissa
     deactivate palvelin
+```

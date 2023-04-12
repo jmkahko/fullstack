@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     participant selain
     participant palvelin
@@ -26,3 +27,4 @@ sequenceDiagram
     activate palvelin
     palvelin-->>selain: favicon.ico tiedosto
     deactivate palvelin
+```
