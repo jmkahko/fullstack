@@ -8,6 +8,38 @@ const Button = ({ handleClick, text}) => {
   )
 }
 
+const All = (props) => {
+  return (
+    <p>all {props.props[0] + props.props[1] + props.props[2]}</p>
+  )
+}
+
+const Average = (props) => {
+  let sumYht = props.props[0] + props.props[1] + props.props[2]
+  let sum = props.props[0] - props.props[2]
+  let result = sum / sumYht
+
+  if (sumYht === 0) {
+    result = 0
+  }
+
+  return (
+    <p>average {result}</p>
+  )
+}
+
+const Positive = (props) => {
+  let sum = props.props[0] + props.props[1] + props.props[2]
+  let result = props.props[0] / sum * 100
+  if (sum === 0) {
+    result = 0
+  }
+
+  return (
+    <p>positive {result} %</p>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -26,6 +58,9 @@ const App = () => {
         <p>good {good}</p>
         <p>neutral {neutral}</p>
         <p>bad {bad}</p>
+        <All props={[good, neutral, bad]} />
+        <Average props={[good, neutral, bad]} />
+        <Positive props={[good, neutral, bad]} />
       </div>
     </div>
   )
