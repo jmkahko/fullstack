@@ -3,4 +3,5 @@ Kurssin [sivusto](https://fullstackopen.com/)
 
 Tehdyt tehtävät
 - [x] osa0
-- [ ] osa1
+- [x] osa1
+- [ ] osa2
