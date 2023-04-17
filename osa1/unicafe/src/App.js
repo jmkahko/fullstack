@@ -13,17 +13,23 @@ const Statistics = (props) => {
   const neutral = props.props[1]
   const bad = props.props[2]
 
-  return (
-    <div>
-      <DisplayHeader header="statistics" />
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <All props={[good, neutral, bad]} />
-      <Average props={[good, neutral, bad]} />
-      <Positive props={[good, neutral, bad]} />
-    </div>
-  )
+  if (good > 0 || neutral > 0 || bad > 0) {
+    return (
+      <div>
+        <DisplayHeader header="statistics" />
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <All props={[good, neutral, bad]} />
+        <Average props={[good, neutral, bad]} />
+        <Positive props={[good, neutral, bad]} />
+      </div>
+    )
+  } else {
+    return (
+      <p>No feedback given</p>
+    )
+  }
 }
 
 const All = (props) => {
