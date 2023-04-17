@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const DisplayHeader = ({header}) => <h1>{header}</h1>
+
 const Button = ({ handleClick, text }) => {
   return (
     <button onClick={handleClick}>{text}</button>
@@ -14,6 +16,30 @@ const arrayVote = (arrayList, selected) => {
   const copyList = { ...arrayList }
   copyList[selected] += 1
   return copyList
+}
+
+const arrayMax = (arrayList, listLenght) => {
+  let major = 0
+
+  for (let i = 0; i < listLenght; i++) {
+    if (arrayList[i] > major) {
+      major = arrayList[i]
+    }
+  }
+  return major
+}
+
+const arrayMaxAnec = (arrayList, listLenght) => {
+  let major = 0
+  let majorAnec = 0
+
+  for (let i = 0; i < listLenght; i++) {
+    if (arrayList[i] > major) {
+      major = arrayList[i]
+      majorAnec = i
+    }
+  }
+  return majorAnec
 }
 
 const App = () => {
@@ -33,12 +59,17 @@ const App = () => {
 
   return (
     <div>
+      <DisplayHeader header="Anecdote of the day" />
       {anecdotes[selected]}
       <p>has {arrayList[selected]} votes</p>
       <div>
         <Button handleClick={() => setVote(arrayVote(arrayList, selected))} text="vote" />
         <Button handleClick={() => setSelected(randomNumber(anecdotes))} text="next anecdote" />
       </div>
+
+      <DisplayHeader header="Anecdote with most votes" />
+      {anecdotes[arrayMaxAnec(arrayList, anecdotes.length)]}
+      <p>has {arrayMax(arrayList, anecdotes.length)} votes</p>
     </div>
 
   )
