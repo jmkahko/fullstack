@@ -8,6 +8,41 @@ const Button = ({ handleClick, text}) => {
   )
 }
 
+const StatisticLine = ({ value, text }) => {
+  if (text === 'all') {
+    return (
+      <p>all {value[0] + value[1] + value[2]}</p>
+    )
+  } else if (text === 'average') {
+    let sumYht = value[0] + value[1] + value[2]
+    let sum = value[0] - value[2]
+    let result = sum / sumYht
+  
+    if (sumYht === 0) {
+      result = 0
+    }
+    
+    return (
+      <p>average {result}</p>
+    )
+  } else if (text === 'positive') {
+    let sum = value[0] + value[1] + value[2]
+    let result = value[0] / sum * 100
+
+    if (sum === 0) {
+      result = 0
+    }
+  
+    return (
+      <p>positive {result} %</p>
+    )
+  } else {
+    return (
+      <p>{text} {value}</p>
+    )
+  }
+}
+
 const Statistics = (props) => {
   const good = props.props[0]
   const neutral = props.props[1]
@@ -16,13 +51,12 @@ const Statistics = (props) => {
   if (good > 0 || neutral > 0 || bad > 0) {
     return (
       <div>
-        <DisplayHeader header="statistics" />
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <All props={[good, neutral, bad]} />
-        <Average props={[good, neutral, bad]} />
-        <Positive props={[good, neutral, bad]} />
+        <StatisticLine text="good" value={good} />
+        <StatisticLine text="neutral" value={neutral} />
+        <StatisticLine text="bad" value={bad} />
+        <StatisticLine text="all" value={[good, neutral, bad]} />
+        <StatisticLine text="average" value={[good, neutral, bad]} />
+        <StatisticLine text="positive" value={[good, neutral, bad]} />
       </div>
     )
   } else {
@@ -30,38 +64,6 @@ const Statistics = (props) => {
       <p>No feedback given</p>
     )
   }
-}
-
-const All = (props) => {
-  return (
-    <p>all {props.props[0] + props.props[1] + props.props[2]}</p>
-  )
-}
-
-const Average = (props) => {
-  let sumYht = props.props[0] + props.props[1] + props.props[2]
-  let sum = props.props[0] - props.props[2]
-  let result = sum / sumYht
-
-  if (sumYht === 0) {
-    result = 0
-  }
-
-  return (
-    <p>average {result}</p>
-  )
-}
-
-const Positive = (props) => {
-  let sum = props.props[0] + props.props[1] + props.props[2]
-  let result = props.props[0] / sum * 100
-  if (sum === 0) {
-    result = 0
-  }
-
-  return (
-    <p>positive {result} %</p>
-  )
 }
 
 const App = () => {
@@ -78,6 +80,7 @@ const App = () => {
         <Button handleClick={() => setBad(bad + 1)} text="bad" />
       </div>
       <div>
+        <DisplayHeader header="statistics" />
         <Statistics props={[good, neutral, bad]} />
       </div>
     </div>
