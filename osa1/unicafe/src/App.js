@@ -8,6 +8,24 @@ const Button = ({ handleClick, text}) => {
   )
 }
 
+const Statistics = (props) => {
+  const good = props.props[0]
+  const neutral = props.props[1]
+  const bad = props.props[2]
+
+  return (
+    <div>
+      <DisplayHeader header="statistics" />
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
+      <All props={[good, neutral, bad]} />
+      <Average props={[good, neutral, bad]} />
+      <Positive props={[good, neutral, bad]} />
+    </div>
+  )
+}
+
 const All = (props) => {
   return (
     <p>all {props.props[0] + props.props[1] + props.props[2]}</p>
@@ -54,13 +72,7 @@ const App = () => {
         <Button handleClick={() => setBad(bad + 1)} text="bad" />
       </div>
       <div>
-        <DisplayHeader header="statistics" />
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <All props={[good, neutral, bad]} />
-        <Average props={[good, neutral, bad]} />
-        <Positive props={[good, neutral, bad]} />
+        <Statistics props={[good, neutral, bad]} />
       </div>
     </div>
   )
