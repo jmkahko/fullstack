@@ -12,6 +12,7 @@ const Content = ({ course }) => {
       {course.parts.map(course => 
         <Part key={course.id} course={course} />
       )}
+      <TotalCount course={course} />
     </div>
   )
 }
@@ -28,6 +29,17 @@ const Course = ({ course }) => {
       <Header course={course} />
       <Content course={course} />
     </div>
+  )
+}
+
+const TotalCount = ({ course }) => {
+  let luku = 0
+  course.parts.map(value => {
+    luku += value.exercises
+  })
+
+  return (
+    <b>total of {luku} exercises</b>
   )
 }
 
@@ -50,6 +62,11 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'JavaScript',
+        exercises: 11,
+        id: 4
       }
     ]
   }
