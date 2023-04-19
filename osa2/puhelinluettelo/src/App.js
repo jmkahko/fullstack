@@ -8,9 +8,16 @@ const Person = ({ person }) => {
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Janne Kähkönen', number: '050-1234567' }]) 
+    { name: 'Janne Kähkönen', number: '050-1234567' },
+    { name: 'Aku Ankka', number: '050-313' },
+    { name: 'Roope-Setä', number: '050-3131' },
+    { name: 'Tupu', number: '050-3132' },
+    { name: 'Hupu', number: '050-3133' },
+    { name: 'Lupu', number: '050-3134' },
+  ]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [findName, setFindName] = useState('')
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -30,6 +37,8 @@ const App = () => {
     }
   }
 
+  const personShow = persons.filter(person => person.name.toUpperCase().includes(findName.toUpperCase()))
+
   const handlePersonChanges = (event) => {
     setNewName(event.target.value)
   }
@@ -38,9 +47,17 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
+  const handleFindNameChanges = (event) => {
+    setFindName(event.target.value)
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        filter shown with <input value={findName} onChange={handleFindNameChanges}/>
+      </div>
+      <h2>add a new</h2>
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName} onChange={handlePersonChanges}/>
@@ -53,7 +70,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-        {persons.map(person =>
+        {personShow.map(person =>
           <Person key={person.name} person={person} />
         )}
     </div>
