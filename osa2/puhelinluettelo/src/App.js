@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import personServices from './services/personsService'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
