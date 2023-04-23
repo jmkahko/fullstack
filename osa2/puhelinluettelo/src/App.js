@@ -28,7 +28,20 @@ const App = () => {
     const booleanName = persons.find(({ name }) => name === newName)
 
     if (booleanName !== undefined && booleanName.name === newName) {
-      window.alert(`${newName} is already added to phonebook`)
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+        const updatePerson = {...booleanName, number: newNumber}
+
+        personsService
+          .update(booleanName.id, updatePerson)
+
+        personsService
+          .getAll()
+          .then(initialPersons => {
+            setPersons(initialPersons)
+            setNewName('')
+            setNewNumber('')
+          })
+      }
     } else {
       personsService
         .create(personObject)
