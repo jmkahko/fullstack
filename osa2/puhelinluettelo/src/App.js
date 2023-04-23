@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-import personServices from './services/personsService'
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import Persons from './components/Persons'
-import personsService from './services/personsService'
+import personsService from './services/PersonsService'
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -12,7 +11,7 @@ const App = () => {
   const [findName, setFindName] = useState('')
 
   useEffect(() => {
-    personServices
+    personsService
       .getAll()
       .then(initialPersons => {
         setPersons(initialPersons)
@@ -41,6 +40,19 @@ const App = () => {
     }
   }
 
+  const deletePerson = (person) => {
+    if (window.confirm(`Delete ${person.name} ?`)) {
+      personsService
+        .deletePerson(person.id)
+        
+      personsService
+        .getAll()
+        .then(initialPersons => {
+          setPersons(initialPersons)
+        })
+    }
+  }
+
   const personShow = persons.filter(person => person.name.toUpperCase().includes(findName.toUpperCase()))
 
   const handlePersonChanges = (event) => {
@@ -64,7 +76,7 @@ const App = () => {
       <PersonForm onSubmit={addPerson} value={[newName, newNumber]} onChange={[handlePersonChanges, handleNumberChanges]} />
 
       <h3>Numbers</h3>
-      <Persons persons={personShow} />
+      <Persons onClick={deletePerson} persons={personShow} />
     </div>
   )
 }
