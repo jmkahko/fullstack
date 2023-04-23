@@ -1,0 +1,34 @@
+{
+  "persons":[
+    {
+      "name": "Janne Kähkönen", 
+      "number": "050-1234567",
+      "id": 1
+    },
+    {
+      "name": "Aku Ankka", 
+      "number": "050-313",
+      "id": 2 
+    },
+    {
+      "name": "Roope-Setä", 
+      "number": "050-3131",
+      "id": 3 
+    },
+    {
+      "name": "Tupu", 
+      "number": "050-3132",
+      "id": 4 
+    },
+    {
+      "name": "Hupu", 
+      "number": "050-3133",
+      "id": 5 
+    },
+    {
+      "name": "Lupu", 
+      "number": "050-3134",
+      "id": 6 
+    }
+  ]
+}
