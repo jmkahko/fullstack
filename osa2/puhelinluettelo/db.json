@@ -1,34 +1,39 @@
 {
-  "persons":[
+  "persons": [
     {
-      "name": "Janne Kähkönen", 
+      "name": "Janne Kähkönen",
       "number": "050-1234567",
       "id": 1
     },
     {
-      "name": "Aku Ankka", 
+      "name": "Aku Ankka",
       "number": "050-313",
-      "id": 2 
+      "id": 2
     },
     {
-      "name": "Roope-Setä", 
+      "name": "Roope-Setä",
       "number": "050-3131",
-      "id": 3 
+      "id": 3
     },
     {
-      "name": "Tupu", 
+      "name": "Tupu",
       "number": "050-3132",
-      "id": 4 
+      "id": 4
     },
     {
-      "name": "Hupu", 
+      "name": "Hupu",
       "number": "050-3133",
-      "id": 5 
+      "id": 5
     },
     {
-      "name": "Lupu", 
+      "name": "Lupu",
       "number": "050-3134",
-      "id": 6 
+      "id": 6
+    },
+    {
+      "name": "Iines Ankka",
+      "number": "041-1234",
+      "id": 7
     }
   ]
 }
