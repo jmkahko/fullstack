@@ -10,6 +10,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [findName, setFindName] = useState('')
   const [informationMessage, setInformationMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     personsService
@@ -34,6 +35,18 @@ const App = () => {
 
         personsService
           .update(booleanName.id, updatePerson)
+          .then(() => {
+            setInformationMessage(`Person '${newName}' number is update`)
+            setTimeout(() => {
+              setInformationMessage(null)
+            }, 2000)
+          })
+          .catch(() => {
+            setErrorMessage(`the person '${newName}' operation failed`)
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 2000)
+          })
 
         personsService
           .getAll()
@@ -42,11 +55,6 @@ const App = () => {
             setNewName('')
             setNewNumber('')
           })
-        
-        setInformationMessage(`Person '${newName}' number is update`)
-        setTimeout(() => {
-          setInformationMessage(null)
-        }, 2000)
       }
     } else {
       personsService
@@ -55,12 +63,17 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          setInformationMessage(`Person '${personObject.name}' added`)
+          setTimeout(() => {
+            setInformationMessage(null)
+          }, 2000)
         })
-
-      setInformationMessage(`Person '${personObject.name}' added`)
-      setTimeout(() => {
-        setInformationMessage(null)
-      }, 2000)
+        .catch(() => {
+          setErrorMessage(`the person '${personObject.name}' operation failed`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 2000)
+        })
     }
   }
 
@@ -68,27 +81,46 @@ const App = () => {
     if (window.confirm(`Delete ${person.name} ?`)) {
       personsService
         .deletePerson(person.id)
-        
+        .then(() => {
+          setInformationMessage(`Person '${person.name}' deleted`)
+          setTimeout(() => {
+            setInformationMessage(null)
+          }, 2000)
+        })
+        .catch(() => {
+          setErrorMessage(`the person '${person.name}' operation failed`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 2000)
+        })
+
       personsService
         .getAll()
         .then(initialPersons => {
           setPersons(initialPersons)
         })
-
-      setInformationMessage(`Person '${person.name}' deleted`)
-      setTimeout(() => {
-        setInformationMessage(null)
-      }, 2000)
     }
   }
 
-  const Notification = ({ message }) => {
+  const InformationNotification = ({ message }) => {
     if (message === null) {
       return null
     }
 
     return (
       <div className='information'>
+        {message}
+      </div>
+    )
+  }
+
+  const ErrorNotification = ({ message }) => {
+    if (message === null) {
+      return null
+    }
+
+    return (
+      <div className='error'>
         {message}
       </div>
     )
@@ -111,7 +143,9 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={informationMessage} />
+      <InformationNotification message={informationMessage} />
+      <ErrorNotification message={errorMessage} />
+
       <Filter value={findName} onChange={handleFindNameChanges} />
 
       <h3>Add a new</h3>
