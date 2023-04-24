@@ -9,6 +9,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [findName, setFindName] = useState('')
+  const [informationMessage, setInformationMessage] = useState(null)
 
   useEffect(() => {
     personsService
@@ -41,6 +42,11 @@ const App = () => {
             setNewName('')
             setNewNumber('')
           })
+        
+        setInformationMessage(`Person '${newName}' number is update`)
+        setTimeout(() => {
+          setInformationMessage(null)
+        }, 2000)
       }
     } else {
       personsService
@@ -50,6 +56,11 @@ const App = () => {
           setNewName('')
           setNewNumber('')
         })
+
+      setInformationMessage(`Person '${personObject.name}' added`)
+      setTimeout(() => {
+        setInformationMessage(null)
+      }, 2000)
     }
   }
 
@@ -63,7 +74,24 @@ const App = () => {
         .then(initialPersons => {
           setPersons(initialPersons)
         })
+
+      setInformationMessage(`Person '${person.name}' deleted`)
+      setTimeout(() => {
+        setInformationMessage(null)
+      }, 2000)
     }
+  }
+
+  const Notification = ({ message }) => {
+    if (message === null) {
+      return null
+    }
+
+    return (
+      <div className='information'>
+        {message}
+      </div>
+    )
   }
 
   const personShow = persons.filter(person => person.name.toUpperCase().includes(findName.toUpperCase()))
@@ -83,6 +111,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={informationMessage} />
       <Filter value={findName} onChange={handleFindNameChanges} />
 
       <h3>Add a new</h3>
