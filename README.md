@@ -22,5 +22,24 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 1.12* anekdootit step1
     - [x] tehtävä 1.13* anekdootit step2
     - [x] tehtävä 1.14* anekdootit step3
-- [ ] osa2
+- [x] osa2
+    - [x] tehtävä 2.1 kurssitiedot, step6
+    - [x] tehtävä 2.2 kurssitiedot, step7
+    - [x] tehtävä 2.3 kurssitiedot, step8
+    - [x] tehtävä 2.4 kurssitiedot, step9
+    - [x] tehtävä 2.5 erillinen moduuli
+    - [x] tehtävä 2.6 puhelinluettelo, step1
+    - [x] tehtävä 2.7 puhelinluettelo, step2
+    - [x] tehtävä 2.8 puhelinluettelo, step3
+    - [x] tehtävä 2.9* puhelinluettelo, step4
+    - [x] tehtävä 2.10 puhelinluettelo, step5
+    - [x] tehtävä 2.11 puhelinluettelo, step6
+    - [x] tehtävä 2.12 puhelinluettelo, step7
+    - [x] tehtävä 2.13 puhelinluettelo, step8
+    - [x] tehtävä 2.14 puhelinluettelo, step9
+    - [x] tehtävä 2.15* puhelinluettelo, step10
+    - [x] tehtävä 2.16 puhelinluettelo, step11
+    - [x] tehtävä 2.17* puhelinluettelo, step12
+    - [x] tehtävä 2.18* maiden tiedot, step1
+- [ ] osa3
 ```
