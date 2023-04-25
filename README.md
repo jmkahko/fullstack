@@ -41,5 +41,7 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 2.16 puhelinluettelo, step11
     - [x] tehtävä 2.17* puhelinluettelo, step12
     - [x] tehtävä 2.18* maiden tiedot, step1
+    - [ ] tehtävä 2.19* maiden tiedot, step2
+    - [ ] tehtävä 2.20* maiden tiedot, step3
 - [ ] osa3
 ```
