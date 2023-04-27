@@ -43,5 +43,14 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 2.18* maiden tiedot, step1
     - [ ] tehtävä 2.19* maiden tiedot, step2
     - [ ] tehtävä 2.20* maiden tiedot, step3
-- [ ] osa3
+- [ ] osa3 tehtävien repositori https://github.com/jmkahko/fullstack_osa3_Backend
+    - [x] tehtävä 3.1 puhelinluettelon backend step1
+    - [x] tehtävä 3.2 puhelinluettelon backend step2
+    - [x] tehtävä 3.3 puhelinluettelon backend step3
+    - [x] tehtävä 3.4 puhelinluettelon backend step4
+    - [x] tehtävä 3.5 puhelinluettelon backend step5
+    - [x] tehtävä 3.6 puhelinluettelon backend step6
+    - [x] tehtävä 3.7 puhelinluettelon backend step7
+    - [x] tehtävä 3.8* puhelinluettelon backend step8
+
 ```
