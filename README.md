@@ -1,6 +1,8 @@
 # Full stack open -kurssi
 Kurssin [sivusto](https://fullstackopen.com/)
 
+Kurssin osa3 tehtävien [repositori](https://github.com/jmkahko/fullstack_osa3_Backend)
+
 ```[tasklist]
 ### Tehdyt tehtävät
 - [x] osa0
@@ -43,7 +45,7 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 2.18* maiden tiedot, step1
     - [ ] tehtävä 2.19* maiden tiedot, step2
     - [ ] tehtävä 2.20* maiden tiedot, step3
-- [ ] osa3 tehtävien repositori https://github.com/jmkahko/fullstack_osa3_Backend
+- [ ] osa3
     - [x] tehtävä 3.1 puhelinluettelon backend step1
     - [x] tehtävä 3.2 puhelinluettelon backend step2
     - [x] tehtävä 3.3 puhelinluettelon backend step3
