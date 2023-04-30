@@ -1,12 +1,16 @@
 # Full stack open -kurssi
 Kurssin [sivusto](https://fullstackopen.com/)
 
-```[tasklist]
+
 ### Tehdyt tehtävät
+```[tasklist]
 - [x] osa0
     - [x] tehtävä 0.4
     - [x] tehtävä 0.5
     - [x] tehtävä 0.6
+```
+
+```[tasklist]
 - [x] osa1
     - [x] tehtävä 1.1 kurssitiedot, step1
     - [x] tehtävä 1.2 kurssitiedot, step2
@@ -22,6 +26,9 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 1.12* anekdootit step1
     - [x] tehtävä 1.13* anekdootit step2
     - [x] tehtävä 1.14* anekdootit step3
+```
+
+```[tasklist]
 - [x] osa2
     - [x] tehtävä 2.1 kurssitiedot, step6
     - [x] tehtävä 2.2 kurssitiedot, step7
@@ -43,7 +50,11 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 2.18* maiden tiedot, step1
     - [ ] tehtävä 2.19* maiden tiedot, step2
     - [ ] tehtävä 2.20* maiden tiedot, step3
-- [ ] osa3 tehtävien repositori https://github.com/jmkahko/fullstack_osa3_Backend
+```
+
+Osa3 tehtävien [backend](https://github.com/jmkahko/fullstack_osa3_Backend) -repositori
+```[tasklist]
+- [x] osa3
     - [x] tehtävä 3.1 puhelinluettelon backend step1
     - [x] tehtävä 3.2 puhelinluettelon backend step2
     - [x] tehtävä 3.3 puhelinluettelon backend step3
@@ -52,5 +63,23 @@ Kurssin [sivusto](https://fullstackopen.com/)
     - [x] tehtävä 3.6 puhelinluettelon backend step6
     - [x] tehtävä 3.7 puhelinluettelon backend step7
     - [x] tehtävä 3.8* puhelinluettelon backend step8
+    - [x] tehtävä 3.9 puhelinluettelon backend step9
+    - [x] tehtävä 3.10 puhelinluettelon backend step10
+    - [x] tehtävä 3.11 puhelinluettelo full stack
+    - [x] tehtävä 3.12: tietokanta komentoriviltä
+    - [x] tehtävä 3.13: puhelinluettelo ja tietokanta, step1
+    - [x] tehtävä 3.14: puhelinluettelo ja tietokanta, step2
+    - [x] tehtävä 3.15: puhelinluettelo ja tietokanta, step3
+    - [x] tehtävä 3.16: puhelinluettelo ja tietokanta, step4
+    - [x] tehtävä 3.17*: puhelinluettelo ja tietokanta, step5
+    - [x] tehtävä 3.18*: puhelinluettelo ja tietokanta, step6
+    - [x] tehtävä 3.19: puhelinluettelo ja tietokanta, step7
+    - [x] tehtävä 3.20*: puhelinluettelo ja tietokanta, step8
+    - [x] tehtävä 3.21 tietokantaa käyttävä versio Internetiin
+    - [x] tehtävä 3.22: lint-konfiguraatio
+```
 
+```[tasklist]
+- [ ] osa4
+    - [ ] tehtävä
 ```
