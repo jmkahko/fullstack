@@ -68,8 +68,8 @@ const App = () => {
             setInformationMessage(null)
           }, 2000)
         })
-        .catch(() => {
-          setErrorMessage(`the person '${personObject.name}' operation failed`)
+        .catch(error => {
+          setErrorMessage(error.response.data.error)
           setTimeout(() => {
             setErrorMessage(null)
           }, 2000)
