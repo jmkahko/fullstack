@@ -108,3 +108,8 @@ Osa4 tehtävien [blogilista](https://github.com/jmkahko/fullstack_blogilista) -r
     - [x] tehtävä 4.22*: blogilistan laajennus, step10 
     - [ ] tehtävä 4.23*: blogilistan laajennus, step11
 ```
+
+```[tasklist]
+- [ ] osa5
+    - [ ] tehtävä 
+```
