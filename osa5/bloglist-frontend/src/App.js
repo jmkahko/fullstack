@@ -11,6 +11,8 @@ const App = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
+  const [informationMessage, setInformationMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -40,14 +42,25 @@ const App = () => {
       setTitle('')
       setAuthor('')
       setUrl('')
+      setInformationMessage(`User ${user.name} is sign in`)
+      setTimeout(() => {
+        setInformationMessage(null)
+      }, 2000)
     } catch (e) {
-      console.log('error : ', e)
+      setErrorMessage(`Wrong username or password`)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
     }
   }
 
   const handleLogOut = (event) => {
     window.localStorage.removeItem('loggedBlogUser')
     setUser(null)
+    setInformationMessage(`User logged out`)
+    setTimeout(() => {
+      setInformationMessage(null)
+    }, 2000)
   }
 
   const handleCreateNewBlog = async (event) => {
@@ -66,16 +79,49 @@ const App = () => {
       setTitle('')
       setAuthor('')
       setUrl('')
+      setInformationMessage(`a new blog ${newBlogObject.title} ${newBlogObject.author} added`)
+      setTimeout(() => {
+        setInformationMessage(null)
+      }, 2000)
     })
     .catch((e) => {
-      console.log('error ', e)
+      setErrorMessage(`a new blog some error in adding`)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
     })
+  }
+
+  const InformationNotification = ({ message }) => {
+    if (message === null) {
+      return null
+    }
+
+    return (
+      <div className='information'>
+        {message}
+      </div>
+    )
+  }
+
+  const ErrorNotification = ({ message }) => {
+    if (message === null) {
+      return null
+    }
+
+    return (
+      <div className='error'>
+        {message}
+      </div>
+    )
   }
 
   if (user === null) {
     return (
       <div>
         <h1>Login to application</h1>
+        <InformationNotification message={informationMessage} />
+        <ErrorNotification message={errorMessage} />
         <form onSubmit ={handleLogin}>
           <div>
             username <input type="text" value={username} name="Username" onChange={({ target }) => setUsername(target.value)} />
@@ -91,6 +137,8 @@ const App = () => {
     return (
       <div>
         <h2>Blogs</h2>
+        <InformationNotification message={informationMessage} />
+        <ErrorNotification message={errorMessage} />
         <p>{user.name} logged in <button onClick={handleLogOut}>Logout</button></p>
 
         <h2>Create new</h2>
