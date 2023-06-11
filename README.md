@@ -83,7 +83,7 @@ Osa3 tehtävien [backend](https://github.com/jmkahko/fullstack_osa3_Backend) -re
 
 Osa4 tehtävien [blogilista](https://github.com/jmkahko/fullstack_blogilista) -repositori
 ```[tasklist]
-- [ ] osa4
+- [x] osa4
     - [x] tehtävä 4.1: blogilista, step1
     - [x] tehtävä 4.2: blogilista, step2
     - [x] tehtävä 4.3: apufunktioita ja yksikkötestejä, step1
