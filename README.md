@@ -1,8 +1,6 @@
 # Full stack open -kurssi
 Kurssin [sivusto](https://fullstackopen.com/)
 
-Kurssin osa3 tehtävien [repositori](https://github.com/jmkahko/fullstack_osa3_Backend)
-
 ```[tasklist]
 ### Tehdyt tehtävät
 ```[tasklist]
