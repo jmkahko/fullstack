@@ -19,19 +19,17 @@ const Blog = ({ blog }) => {
   return (
     <div style={blogStyle}>
       <div style={hideWhenVisible}>
-        <div>{blog.title} <button onClick={() => setBlogVisible(true)}>view</button></div>
+        <div>{blog.title} {blog.author} <button onClick={() => setBlogVisible(true)}>view</button></div>
       </div>
 
       <div style={showWhenVisible} className='blogBackground'>
-        <div>{blog.title} <button onClick={() => setBlogVisible(false)}>hide</button></div>
+        <div>{blog.title} {blog.author} <button onClick={() => setBlogVisible(false)}>hide</button></div>
           <div>{blog.url}</div>
           <div>likes {blog.likes} <button>like</button></div>
-          <div>{blog.author}</div>  
+          <div>{blog.user.name}</div>
       </div>
     </div>
   )
 }
-
-
 
 export default Blog
