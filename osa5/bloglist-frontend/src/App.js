@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Blog from './components/Blog'
+import NewBlogForm from './components/NewBlogForm'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
@@ -8,9 +9,6 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
   const [informationMessage, setInformationMessage] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [newBlogVisible, setNewBlogVisible] = useState(false)
@@ -40,9 +38,6 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
-      setTitle('')
-      setAuthor('')
-      setUrl('')
       setInformationMessage(`User ${user.name} is sign in`)
       setTimeout(() => {
         setInformationMessage(null)
@@ -55,7 +50,7 @@ const App = () => {
     }
   }
 
-  const handleLogOut = (event) => {
+  const handleLogOut = () => {
     window.localStorage.removeItem('loggedBlogUser')
     setUser(null)
     setInformationMessage(`User logged out`)
@@ -64,22 +59,11 @@ const App = () => {
     }, 2000)
   }
 
-  const handleCreateNewBlog = async (event) => {
-    event.preventDefault()
-
-    const newBlogObject = {
-      title: title,
-      author: author,
-      url: url
-    }
-
+  const handleCreateNewBlog = async (newBlogObject) => {
     blogService
     .createNewBlog(newBlogObject)
     .then(returnedBlog => {
       setBlogs(blogs.concat(returnedBlog))
-      setTitle('')
-      setAuthor('')
-      setUrl('')
       setInformationMessage(`a new blog ${newBlogObject.title} ${newBlogObject.author} added`)
       setTimeout(() => {
         setInformationMessage(null)
@@ -117,26 +101,6 @@ const App = () => {
     )
   }
 
-  const NewBlogForm = () => {
-    return (
-      <div>
-        <h2>Create new</h2>
-        <form onSubmit ={handleCreateNewBlog}>
-          <div>
-            title <input type="text" value={title} name="Title" onChange={({ target }) => setTitle(target.value)} />
-          </div>
-          <div>
-            author <input type="text" value={author} name="Author" onChange={({ target }) => setAuthor(target.value)} />
-          </div>
-          <div>
-            url <input type="text" value={url} name="Url" onChange={({ target }) => setUrl(target.value)} />
-          </div>
-          <button type="submit">Create</button>
-        </form>
-      </div>
-    )
-  }
-
   if (user === null) {
     return (
       <div>
@@ -170,7 +134,7 @@ const App = () => {
         </div>
 
         <div style={showWhenVisible}>
-          <NewBlogForm />
+          <NewBlogForm createNewBlog={handleCreateNewBlog}/>
           <button onClick={() => setNewBlogVisible(false)}>cancel</button>
         </div>
 
