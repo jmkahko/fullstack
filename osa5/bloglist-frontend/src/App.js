@@ -59,6 +59,21 @@ const App = () => {
     }, 2000)
   }
 
+  const handleUpdateBlog = async (updateBlog) => {
+    blogService
+    .updateBlog(updateBlog.id, updateBlog)
+    .catch(() => {
+      setErrorMessage(`blog some error in adding likes`)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
+    })
+
+    blogService.getAll().then(blogs =>
+      setBlogs( blogs )
+    )
+  }
+
   const handleCreateNewBlog = async (newBlogObject) => {
     blogService
     .createNewBlog(newBlogObject)
@@ -134,13 +149,13 @@ const App = () => {
         </div>
 
         <div style={showWhenVisible}>
-          <NewBlogForm createNewBlog={handleCreateNewBlog}/>
+          <NewBlogForm createNewBlog={handleCreateNewBlog} />
           <button onClick={() => setNewBlogVisible(false)}>Cancel</button>
         </div>
 
         <h2>blogs</h2>
         {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} user={user}/>
+          <Blog key={blog.id} blog={blog} user={user} updateBlogLikes={handleUpdateBlog} />
         )}
       </div>
     )

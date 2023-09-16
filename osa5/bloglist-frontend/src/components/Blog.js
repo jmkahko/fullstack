@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../index.css'
 
-const Blog = ({ blog, user }) => {
+const Blog = ({ blog, user, updateBlogLikes }) => {
   const [blogVisible, setBlogVisible] = useState(false)
 
   const blogStyle = {
@@ -18,6 +18,13 @@ const Blog = ({ blog, user }) => {
   
   const findUser = blog.user.name === undefined ? user.name : blog.user.name
 
+  const updateLikes = ( updateBlog ) => {
+    const like = updateBlog.likes + 1
+    const blog = {...updateBlog, likes:like}
+
+    updateBlogLikes(blog)
+  }
+
   return (
     <div style={blogStyle}>
       <div style={hideWhenVisible}>
@@ -27,7 +34,7 @@ const Blog = ({ blog, user }) => {
       <div style={showWhenVisible} className='blogBackground'>
         <div>{blog.title} {blog.author} <button onClick={() => setBlogVisible(false)}>hide</button></div>
           <div>{blog.url}</div>
-          <div>likes {blog.likes} <button>like</button></div>
+          <div>likes {blog.likes} <button onClick={() => updateLikes(blog)}>like</button></div>
           <div>{findUser}</div>
       </div>
     </div>
