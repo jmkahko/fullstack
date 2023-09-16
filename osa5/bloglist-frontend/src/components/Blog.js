@@ -15,12 +15,12 @@ const Blog = ({ blog, user, updateBlogLikes, deleteBlog }) => {
 
   const hideWhenVisible = { display: blogVisible ? 'none' : '' }
   const showWhenVisible = { display: blogVisible ? '' : 'none' }
-  
+
   const findUser = blog.user.name === undefined ? user.name : blog.user.name
 
   const updateLikes = ( updateBlog ) => {
     const like = updateBlog.likes + 1
-    const blog = {...updateBlog, likes:like}
+    const blog = { ...updateBlog, likes:like }
 
     updateBlogLikes(blog)
   }
@@ -39,10 +39,10 @@ const Blog = ({ blog, user, updateBlogLikes, deleteBlog }) => {
 
       <div style={showWhenVisible} className='blogBackground'>
         <div>{blog.title} {blog.author} <button onClick={() => setBlogVisible(false)}>hide</button></div>
-          <div>{blog.url}</div>
-          <div>likes {blog.likes} <button onClick={() => updateLikes(blog)}>like</button></div>
-          <div>{findUser}</div>
-          <div>{blog.user.username === user.username && removeButton()}</div>
+        <div>{blog.url}</div>
+        <div>likes {blog.likes} <button onClick={() => updateLikes(blog)}>like</button></div>
+        <div>{findUser}</div>
+        <div>{blog.user.username === user.username && removeButton()}</div>
       </div>
     </div>
   )

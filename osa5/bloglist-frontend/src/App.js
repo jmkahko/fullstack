@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
-    )  
+    )
   }, [])
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const App = () => {
         setInformationMessage(null)
       }, 2000)
     } catch (e) {
-      setErrorMessage(`Wrong username or password`)
+      setErrorMessage('Wrong username or password')
       setTimeout(() => {
         setErrorMessage(null)
       }, 2000)
@@ -53,7 +53,7 @@ const App = () => {
   const handleLogOut = () => {
     window.localStorage.removeItem('loggedBlogUser')
     setUser(null)
-    setInformationMessage(`User logged out`)
+    setInformationMessage('User logged out')
     setTimeout(() => {
       setInformationMessage(null)
     }, 2000)
@@ -61,13 +61,13 @@ const App = () => {
 
   const handleUpdateBlog = async (updateBlog) => {
     blogService
-    .updateBlog(updateBlog.id, updateBlog)
-    .catch(() => {
-      setErrorMessage(`blog some error in adding likes`)
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 2000)
-    })
+      .updateBlog(updateBlog.id, updateBlog)
+      .catch(() => {
+        setErrorMessage('blog some error in adding likes')
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 2000)
+      })
 
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
@@ -77,41 +77,41 @@ const App = () => {
   const handleDeleteBlog = async (deleteBlog) => {
     if (window.confirm(`Remove ${deleteBlog.title} by ${deleteBlog.author} ?`)) {
       blogService
-      .deleteBlog(deleteBlog.id)
-      .then(() => {
-        setInformationMessage(`Blog '${deleteBlog.title}' removed`)
-        setTimeout(() => {
-          setInformationMessage(null)
-        }, 2000)
-        blogService.getAll().then(blogs =>
-          setBlogs( blogs )
-        )
-      })
-      .catch(() => {
-        setErrorMessage(`The blog '${deleteBlog.title}' remove operation failed`)
-        setTimeout(() => {
-          setErrorMessage(null)
-        }, 2000)
-      })
+        .deleteBlog(deleteBlog.id)
+        .then(() => {
+          setInformationMessage(`Blog '${deleteBlog.title}' removed`)
+          setTimeout(() => {
+            setInformationMessage(null)
+          }, 2000)
+          blogService.getAll().then(blogs =>
+            setBlogs( blogs )
+          )
+        })
+        .catch(() => {
+          setErrorMessage(`The blog '${deleteBlog.title}' remove operation failed`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 2000)
+        })
     }
   }
 
   const handleCreateNewBlog = async (newBlogObject) => {
     blogService
-    .createNewBlog(newBlogObject)
-    .then(returnedBlog => {
-      setBlogs(blogs.concat(returnedBlog))
-      setInformationMessage(`a new blog ${newBlogObject.title} ${newBlogObject.author} added`)
-      setTimeout(() => {
-        setInformationMessage(null)
-      }, 2000)
-    })
-    .catch((e) => {
-      setErrorMessage(`a new blog some error in adding`)
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 2000)
-    })
+      .createNewBlog(newBlogObject)
+      .then(returnedBlog => {
+        setBlogs(blogs.concat(returnedBlog))
+        setInformationMessage(`a new blog ${newBlogObject.title} ${newBlogObject.author} added`)
+        setTimeout(() => {
+          setInformationMessage(null)
+        }, 2000)
+      })
+      .catch(() => {
+        setErrorMessage('a new blog some error in adding')
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 2000)
+      })
   }
 
   const InformationNotification = ({ message }) => {
