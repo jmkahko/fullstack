@@ -13,6 +13,7 @@ const App = () => {
   const [url, setUrl] = useState('')
   const [informationMessage, setInformationMessage] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+  const [newBlogVisible, setNewBlogVisible] = useState(false)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -116,6 +117,26 @@ const App = () => {
     )
   }
 
+  const NewBlogForm = () => {
+    return (
+      <div>
+        <h2>Create new</h2>
+        <form onSubmit ={handleCreateNewBlog}>
+          <div>
+            title <input type="text" value={title} name="Title" onChange={({ target }) => setTitle(target.value)} />
+          </div>
+          <div>
+            author <input type="text" value={author} name="Author" onChange={({ target }) => setAuthor(target.value)} />
+          </div>
+          <div>
+            url <input type="text" value={url} name="Url" onChange={({ target }) => setUrl(target.value)} />
+          </div>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+    )
+  }
+
   if (user === null) {
     return (
       <div>
@@ -134,6 +155,9 @@ const App = () => {
       </div>
     )
   } else {
+    const hideWhenVisible = { display: newBlogVisible ? 'none' : '' }
+    const showWhenVisible = { display: newBlogVisible ? '' : 'none' }
+
     return (
       <div>
         <h2>Blogs</h2>
@@ -141,19 +165,14 @@ const App = () => {
         <ErrorNotification message={errorMessage} />
         <p>{user.name} logged in <button onClick={handleLogOut}>Logout</button></p>
 
-        <h2>Create new</h2>
-        <form onSubmit ={handleCreateNewBlog}>
-          <div>
-            title <input type="text" value={title} name="Title" onChange={({ target }) => setTitle(target.value)} />
-          </div>
-          <div>
-            author <input type="text" value={author} name="Author" onChange={({ target }) => setAuthor(target.value)} />
-          </div>
-          <div>
-            url <input type="text" value={url} name="Url" onChange={({ target }) => setUrl(target.value)} />
-          </div>
-          <button type="submit">Create</button>
-        </form>
+        <div style={hideWhenVisible}>
+          <button onClick={() => setNewBlogVisible(true)}>new note</button>
+        </div>
+
+        <div style={showWhenVisible}>
+          <NewBlogForm />
+          <button onClick={() => setNewBlogVisible(false)}>cancel</button>
+        </div>
 
         <h2>blogs</h2>
         {blogs.map(blog =>
