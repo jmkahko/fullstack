@@ -130,12 +130,12 @@ const App = () => {
         <p>{user.name} logged in <button onClick={handleLogOut}>Logout</button></p>
 
         <div style={hideWhenVisible}>
-          <button onClick={() => setNewBlogVisible(true)}>new note</button>
+          <button onClick={() => setNewBlogVisible(true)}>Create new blog</button>
         </div>
 
         <div style={showWhenVisible}>
           <NewBlogForm createNewBlog={handleCreateNewBlog}/>
-          <button onClick={() => setNewBlogVisible(false)}>cancel</button>
+          <button onClick={() => setNewBlogVisible(false)}>Cancel</button>
         </div>
 
         <h2>blogs</h2>
