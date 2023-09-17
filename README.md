@@ -111,7 +111,7 @@ Osa4 tehtävien [blogilista](https://github.com/jmkahko/fullstack_blogilista) -r
 
 Osa5 tehtävien 5.17-5.23 käytetty ja päivitetty [blogilista](https://github.com/jmkahko/fullstack_blogilista) -repositoria
 ```[tasklist]
-- [ ] osa5
+- [x] osa5
     - [x] 5.1: blogilistan frontend, step1
     - [x] 5.2: blogilistan frontend, step2
     - [x] 5.3: blogilistan frontend, step3
@@ -129,13 +129,10 @@ Osa5 tehtävien 5.17-5.23 käytetty ja päivitetty [blogilista](https://github.c
     - [ ] 5.14: blogilistan testit, step3
     - [ ] 5.16: blogilistan testit, step4
     - [x] 5.17: blogilistan end to end ‑testit, step1
-    - [ ] 5.18: blogilistan end to end ‑testit, step2
-    - [ ] 5.19: blogilistan end to end ‑testit, step3
-    - [ ] 5.20: blogilistan end to end ‑testit, step4
-    - [ ] 5.21: blogilistan end to end ‑testit, step5
-    - [ ] 5.22: blogilistan end to end ‑testit, step6
+    - [x] 5.18: blogilistan end to end ‑testit, step2
+    - [x] 5.19: blogilistan end to end ‑testit, step3
+    - [x] 5.20: blogilistan end to end ‑testit, step4
+    - [x] 5.21: blogilistan end to end ‑testit, step5
+    - [x] 5.22: blogilistan end to end ‑testit, step6
     - [ ] 5.23: blogilistan end to end ‑testit, step6
-
-
-
 ```
