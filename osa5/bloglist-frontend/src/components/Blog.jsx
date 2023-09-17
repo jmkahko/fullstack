@@ -27,7 +27,7 @@ const Blog = ({ blog, user, updateBlogLikes, deleteBlog }) => {
 
   const removeButton = () => {
     return (
-      <button onClick={() => deleteBlog(blog)}>remove</button>
+      <button onClick={() => deleteBlog(blog)} id="removeBlogButton">remove</button>
     )
   }
 
