@@ -77,5 +77,38 @@ describe('Blog app', function() {
       cy.get('#likeBlogButton').click()
       cy.get('#removeBlogButton').click()
     })
+
+    it('Can removed blog only my added blog', function() {
+      cy.get('#createNewBlogButton').click()
+      cy.get('#title').type('Test. Automate. Accelerate.')
+      cy.get('#author').type('Cypress')
+      cy.get('#url').type('https://www.cypress.io/')
+      cy.get('#createBlogButton').click()
+      cy.contains('Test. Automate. Accelerate. Cypress')
+
+      cy.get('#viewBlogButton').click()
+      cy.get('#likeBlogButton').click()
+      cy.get('#logoutButton').click()
+
+      cy.request('POST', 'http://localhost:3003/api/testing/reset')
+      const testUser2 = {
+        name: 'End to End testaus 2',
+        username: 'testi2',
+        password: 'salainen2'
+      }
+      cy.request('POST', 'http://localhost:3003/api/users/', testUser2)
+
+      cy.get('#username').type('testi2')
+      cy.get('#password').type('salainen2')
+      cy.get('#loginButton').click()
+      cy.contains('User End to End testaus 2 is sign in')
+
+      cy.contains('Test. Automate. Accelerate. Cypress')
+      cy.get('#viewBlogButton', { timeout: 10000 }).click()
+      cy.get('#removeBlogButton').should('not.exist')
+      cy.contains('Test. Automate. Accelerate. Cypress')
+      cy.contains('End to End testaus')
+    })
+
   })
 })

@@ -164,7 +164,7 @@ const App = () => {
         <h2>Blogs</h2>
         <InformationNotification message={informationMessage} />
         <ErrorNotification message={errorMessage} />
-        <p>{user.name} logged in <button onClick={handleLogOut}>Logout</button></p>
+        <p>{user.name} logged in <button onClick={handleLogOut} id="logoutButton">Logout</button></p>
 
         <div style={hideWhenVisible}>
           <button onClick={() => setNewBlogVisible(true)} id="createNewBlogButton">Create new blog</button>
