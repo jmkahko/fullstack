@@ -50,5 +50,19 @@ describe('Blog app', function() {
       cy.get('#createBlogButton').click()
       cy.contains('Test. Automate. Accelerate. Cypress')
     })
+
+    it('Can like blog', function() {
+      cy.get('#createNewBlogButton').click()
+      cy.get('#title').type('Test. Automate. Accelerate.')
+      cy.get('#author').type('Cypress')
+      cy.get('#url').type('https://www.cypress.io/')
+      cy.get('#createBlogButton').click()
+      cy.contains('Test. Automate. Accelerate. Cypress')
+      
+      cy.get('#viewBlogButton').click()
+      cy.contains('likes 0')
+      cy.get('#likeBlogButton').click()
+      cy.contains('likes 1')
+    })
   })
 })
