@@ -134,3 +134,30 @@ Osa5 tehtävien 5.17-5.23 käytetty ja päivitetty [blogilista](https://github.c
     - [x] 5.22: blogilistan end to end ‑testit, step6
     - [ ] 5.23: blogilistan end to end ‑testit, step6
 ```
+
+Osa12 tehtävien [containers](https://github.com/jmkahko/fullstackContainers) -repositori
+```[tasklist]
+- [x] osa12
+    - [x] Exercise 12.1: Using a computer (without graphical user interface)
+    - [x] Exercise 12.2: Running your second container
+    - [x] Exercise 12.3: Ubuntu 101
+    - [x] Exercise 12.4: Ubuntu 102
+    - [x] Exercise 12.5: Containerizing a Node application
+    - [x] Exercise 12.6: Docker compose
+    - [x] Exercise 12.7: Little bit of MongoDB coding
+    - [x] Exercise 12.8: Mongo command-line interface
+    - [x] Exercise 12.9: Set up Redis for the project
+    - [x] Exercise 12.10:
+    - [x] Exercise 12.11:
+    - [x] Exercise 12.12: Persisting data in Redis
+    - [x] Exercise 12.13: Todo application frontend
+    - [x] Exercise 12.14: Testing during the build process
+    - [x] Exercise 12.15: Set up a frontend development environment
+    - [x] Exercise 12.16: Run todo-backend in a development container
+    - [x] Exercise 12.17: Set up an Nginx reverse proxy server in front of todo-frontend
+    - [x] Exercise 12.18: Configure the Nginx server to be in front of todo-backend
+    - [x] Exercise 12.19: Connect the services, todo-frontend with todo-backend
+    - [x] Exercise 12.20:
+    - [x] Exercise 12.21:
+    - [x] Exercise 12.22:
+```
