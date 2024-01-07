@@ -98,6 +98,13 @@ let books = [
 */
 
 const typeDefs = `
+  type Author {
+    name: String!
+    id: ID!
+    born: Int
+    bookCount: Int!
+  }
+
   type Book {
     title: String!
     published: Int!
@@ -111,6 +118,7 @@ const typeDefs = `
     bookCount: Int!
     authorCount: Int
     allBooks: [Book!]!
+    allAuthors: [Author!]!
   }
 `
 
@@ -119,7 +127,20 @@ const resolvers = {
     dummy: () => 0,
     bookCount: () => books.length,
     authorCount: () => authors.length,
-    allBooks: () => books
+    allBooks: () => books,
+    allAuthors: () => authors
+  },
+  Author: {
+    bookCount: (root) => {
+      let booksCount = 0;
+      books.find(b => {
+        if (b.author === root.name) {
+          booksCount++
+        }
+      })
+
+      return booksCount
+    }
   }
 }
 
