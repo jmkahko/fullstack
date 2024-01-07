@@ -161,3 +161,8 @@ Osa12 tehtävien [containers](https://github.com/jmkahko/fullstackContainers) -r
     - [x] Exercise 12.21:
     - [x] Exercise 12.22:
 ```
+
+Osa13 tehtävien [relaatiotietokanta](https://github.com/jmkahko/fullstackRelaatioTietokanta) -repositori
+```[tasklist]
+- [x] osa13 tehtävät 13.1 - 13.24
+```
