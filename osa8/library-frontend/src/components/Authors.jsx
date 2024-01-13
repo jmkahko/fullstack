@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import Select from 'react-select';
 import { GET_ALL_AUTHORS, UPDATE_AUTHOR_BORN } from "../query"
 import { useQuery, useMutation } from "@apollo/client"
 
 const Authors = (props) => {
   const [born, setBorn] = useState('')
-  const [author, setAuthor] = useState('')
+  const [selectedAuthor, setAuthorSelected] = useState(null);
   const authors = useQuery(GET_ALL_AUTHORS)
   const [ updateAuthorBorn ] = useMutation(UPDATE_AUTHOR_BORN, {
     refetchQueries: [ 
@@ -24,15 +25,24 @@ const Authors = (props) => {
     )
   }
 
+  let authorsOptions = []
+  authors.data.allAuthors.map((a) => {
+    authorsOptions.push({ value: a.name, label: a.name})
+  })
+
   const submit = async (event) => {
     event.preventDefault()
 
     updateAuthorBorn({
-      variables: { name: author, setBornTo: parseInt(born) }
+      variables: { name: selectedAuthor.value, setBornTo: parseInt(born) }
     })
 
-    setAuthor('')
     setBorn('')
+    handleSelectedChange(null)
+  }
+
+  const handleSelectedChange = (selected) => {
+    setAuthorSelected(selected)
   }
 
   return (
@@ -58,11 +68,7 @@ const Authors = (props) => {
       <h2>set birthyear</h2>
       <form onSubmit={submit}>
         <div>
-          name
-          <input
-            value={author}
-            onChange={({ target }) => setAuthor(target.value)}
-          />
+          <Select value={selectedAuthor} onChange={handleSelectedChange} options={authorsOptions} placeholder="Select author..." isClearable={true} />
         </div>
         <div>
           born
