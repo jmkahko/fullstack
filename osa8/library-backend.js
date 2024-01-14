@@ -246,21 +246,20 @@ const resolvers = {
       }
     },
     editAuthor: async (root, args) => {
-      await Author.findOne({ name: args.name })
-        .then(async author => {
-          if (author === null) {
-            return null
-          }
-          await Author.updateOne(
-            { name: author.name }, 
-            { $set: { born: args.setBornTo } 
-          }).then(async () => {
-            await Author.findOne({ name: args.name })
-              .then(async update => {
-                return update
-              })
-          })
-        })
+      const author = await Author.findOne({ name: args.name })
+
+      if (author === null) {
+        return null
+      }
+
+      await Author.updateOne(
+        { name: author.name }, 
+        { $set: { born: args.setBornTo } 
+      })
+
+      const authorUpdated = await Author.findOne({ name: args.name })
+
+      return authorUpdated
     }
   }
 }
