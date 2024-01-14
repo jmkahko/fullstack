@@ -7,6 +7,7 @@ require('dotenv').config()
 
 const Author = require('./models/author')
 const Book = require('./models/book')
+const { GraphQLError } = require('graphql')
 
 const MONGODB_URI = process.env.MONGODB_URI
 
@@ -218,31 +219,48 @@ const resolvers = {
           name: args.author
         })
 
-        const saveAuthor = await newAuthor.save({
-          name: args.author
-        })
-
-        const newBook = new Book({
-          title: args.title,
-          published: args.published,
-          author: saveAuthor,
-          genres: args.genres
-        })
+        try {
+          const saveAuthor = await newAuthor.save({
+            name: args.author
+          })
   
-        await newBook.save()
-  
-        return newBook
+          const newBook = new Book({
+            title: args.title,
+            published: args.published,
+            author: saveAuthor,
+            genres: args.genres
+          })
+    
+          await newBook.save()
+    
+          return newBook
+        } catch (error) {
+          throw new GraphQLError(error, {
+            extensions: {
+              code: 'BAD_INPUT',
+              error
+            }
+          })
+        }
       } else {
-        const newBook = new Book({
-          title: args.title,
-          published: args.published,
-          author: author,
-          genres: args.genres
-        })
-  
-        await newBook.save()
-  
-        return newBook
+        try {        
+          const newBook = new Book({
+            title: args.title,
+            published: args.published,
+            author: author,
+            genres: args.genres
+          })
+
+          await newBook.save()
+          return newBook
+        } catch (error) {
+          throw new GraphQLError(error, {
+            extensions: {
+              code: 'BAD_INPUT',
+              error
+            }
+          })
+        }
       }
     },
     editAuthor: async (root, args) => {
