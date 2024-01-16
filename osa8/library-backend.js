@@ -151,6 +151,7 @@ const typeDefs = `
     allBooks(author: String, genre: String): [Book!]!
     allAuthors: [Author!]!
     me: User
+    allGenres: [String]!
   }
 
   type Mutation {
@@ -222,6 +223,20 @@ const resolvers = {
     },
     me: async (root, args, context) => {
       return context.validUser
+    },
+    allGenres: async (root, args) => {
+      let allGenres = []
+
+      const booksGenres = await Book.find({}, { genres: 1, _id: 0 })
+      booksGenres.map((book) => {
+        book.genres.map((genre) => {
+          allGenres.push(genre)
+        })
+      })
+
+      const removeDuplicate = [...new Set(allGenres)]
+
+      return removeDuplicate
     }
   },
   Author: {
