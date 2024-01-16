@@ -80,3 +80,24 @@ export const GET_ALL_BOOKS_GENRE = gql`
     }
   }
 `
+
+export const GET_ME = gql`
+  query Me {
+    me {
+      username,
+      favoriteGenre
+    }
+  }
+`
+
+export const MY_FAVORITE_GENRE_BOOKS = gql`
+  query myFavoriteGenreBooks {
+    myFavoriteGenreBooks {
+      author {
+        name
+      }
+      published
+      title
+    }
+  }
+`

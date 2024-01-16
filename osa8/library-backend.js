@@ -152,6 +152,7 @@ const typeDefs = `
     allAuthors: [Author!]!
     me: User
     allGenres: [String]!
+    myFavoriteGenreBooks: [Book!]!
   }
 
   type Mutation {
@@ -237,6 +238,11 @@ const resolvers = {
       const removeDuplicate = [...new Set(allGenres)]
 
       return removeDuplicate
+    },
+    myFavoriteGenreBooks: async (root, args, context) => {
+      const me = context.validUser
+      const books = await Book.find({ genres: me.favoriteGenre }).populate('author')
+      return books
     }
   },
   Author: {
