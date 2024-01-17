@@ -11,7 +11,8 @@ const Books = (props) => {
     variables: { genre: queryGenre },
     refetchQueries: [ 
       { query: GET_ALL_BOOKS_GENRE }
-    ]
+    ],
+    fetchPolicy: "no-cache"
   })
 
   const genres = useQuery(GET_ALL_GENRE)
